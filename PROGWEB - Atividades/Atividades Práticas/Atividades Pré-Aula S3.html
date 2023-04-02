@@ -53,6 +53,7 @@
         style="width: 93%; margin-left: auto; margin-right: auto; margin-top: 50px;">
         <h1 class="col-md-10">Algoritmos</h1>
     </div>
+    <!-- Inputs para as funções pedidas -->
     <div style="width: 91%; margin-left: auto; margin-right: auto; margin-top: 10px;">
         <div>
             <label for="bubbleSort">Bubble Sort - Insira os valores do vetor separados por vírgula e pressione
@@ -113,7 +114,8 @@
         </div>
         <div style="margin-top: 10px; margin-bottom: 50px;">
             <label for="fatorialNum">Fatorial Recursivo - Insira o valor para o cálculo e pressione enter</label>
-            <input class="form-control" style="width: 50%" type="text" id="fatorialNum" onkeydown="_fatorialRecursivo(event)">
+            <input class="form-control" style="width: 50%" type="text" id="fatorialNum"
+                onkeydown="_fatorialRecursivo(event)">
             <input class="form-control" style="margin-top: 10px; width: 30%; height: 30;" id="resultadoFatorial"
                 placeholder="Resultado média" readonly>
         </div>
@@ -122,14 +124,20 @@
 
 <script>
     function bubbleSort(event) {
+        //Verifica se a variável event está definida e se a propriedade keyCode do evento é diferente de 13 (tecla "Enter" do teclado)
         if (event && event.keyCode !== 13) {
             return;
         }
 
+        //Declaração dos campos de input
         const vetorOrganizado = document.getElementById("vetor");
         const array = document.getElementById("bubbleSort").value;
+
+        //Recebe os valores contidos na string array, convertidos em números inteiros.
         const arr = array.split(',').map(Number);
 
+        //Loop aninhado que percorre a matriz arr comparando cada elemento com seu vizinho. 
+        //Se o elemento atual for maior do que o vizinho, os dois elementos são trocados de posição.
         for (let i = 0; i < arr.length; i++) {
             for (let j = 0; j < arr.length - 1 - i; j++) {
                 if (arr[j] > arr[j + 1]) {
@@ -140,66 +148,89 @@
             }
         }
 
+        //Matriz ordenada arr é atribuído ao campo de entrada com o ID "vetor". 
         vetorOrganizado.value = arr;
     }
 
     function fatorial(event) {
+        //Verifica se a variável event está definida e se a propriedade keyCode do evento é diferente de 13 (tecla "Enter" do teclado)
         if (event && event.keyCode !== 13) {
             return;
         }
 
+        //Declaração dos campos de input
         const fat = document.getElementById("fat");
         const numero = document.getElementById("fatorial").value;
 
+        //Verifica se o número digitado pelo usuário é negativo
         if (numero < 0) {
             return null;
         }
+
+        //Inicia uma variável "resultado" com o valor 1 e, em seguida, 
+        //utiliza um loop "for" para calcular o fatorial do número digitado pelo usuário.
         let resultado = 1;
         for (let i = 2; i <= numero; i++) {
             resultado *= i;
         }
 
+        //Atribui ao campo de input "fat" o valor calculado para o fatorial do número digitado pelo usuário, 
+        //armazenado na variável "resultado".
         fat.value = resultado;
     }
 
     function _fibbonacci(event) {
+        //Verifica se a variável event está definida e se a propriedade keyCode do evento é diferente de 13 (tecla "Enter" do teclado)
         if (event && event.keyCode !== 13) {
             return;
         } else {
+
+            //Declaração dos campos de input
             const n = document.getElementById("fibonacci").value;
             const fib = document.getElementById("fib");
 
+            //Atribuição do resultado da função recursiva ao input "fib".
             fib.value = fibonacci(n);
         }
     }
 
     function fibonacci(n) {
 
-        const fib = document.getElementById("fib");
-
+        //Se o valor escolhido for menor ou igual a 1 a função retorna o próprio valor de "n", 
+        //pois o resultado da série de Fibonacci para esses valores é 0 ou 1.
         if (n <= 1) {
             return n;
         }
 
+        //Calcula o valor da série de Fibonacci para o número "n" passado como argumento para a função.
         return fibonacci(n - 1) + fibonacci(n - 2);
     }
 
     function _verificarPrimo(event) {
+        //Verifica se a variável event está definida e se a propriedade keyCode do evento é diferente de 13 (tecla "Enter" do teclado)
         if (event && event.keyCode !== 13) {
             return;
         }
 
+
+        //Declaração de um booleano para confirmar se o número é primo ou não
         let verificacao = false;
+
+        //Declaração dos campos de input
         const outputPrimo = document.getElementById("outputPrimo");
         const primo = document.getElementById("primo").value;
 
+        //Verifica se o número "primo" é menor ou igual a 1. 
         if (primo <= 1) {
             outputPrimo.value = "Números menores ou iguais a 1 não são primos"
             return;
         } else {
+
+            //Caso contrário, a função "verificarPrimo" é chamada com o valor "primo" como argumento.
             verificacao = verificarPrimo(primo);
         }
 
+        //Output do resultado
         if (verificacao === true) {
             outputPrimo.value = "É primo";
         } else {
@@ -209,6 +240,7 @@
 
     function verificarPrimo(primo) {
 
+        //Calcula se o resto da divisão do número escolhido por quaisquer outros números entre 1 e ele mesmo, caso seja ele não é primo
         for (let i = 2; i < primo; i++) {
             if (primo % i === 0) {
                 return false;
@@ -219,109 +251,146 @@
     }
 
     function inverterString(event) {
+        //Verifica se a variável event está definida e se a propriedade keyCode do evento é diferente de 13 (tecla "Enter" do teclado)
         if (event && event.keyCode !== 13) {
             return;
         }
 
+        //Declaração dos campos de input
         const string = document.getElementById("string").value;
         const novaString = document.getElementById("novaString");
 
+        //Declaração da nova string que será mostrada
         let _novaString = '';
 
+        //Percorre a string de trás para frente e atribui cada caracter ao final da _novaString
         for (let i = string.length - 1; i >= 0; i--) {
             _novaString += string[i];
         }
 
+        //Atribuição da nova string para o campo de input na tela
         novaString.value = _novaString;
     }
 
     function contaString(event) {
+        //Verifica se a variável event está definida e se a propriedade keyCode do evento é diferente de 13 (tecla "Enter" do teclado)
         if (event && event.keyCode !== 13) {
             return;
         }
 
+
+        //Declaração dos campos de input
         let str = document.getElementById("stringCount").value;
         const newStr = document.getElementById("novaStringCount");
 
+        //Remoção de espaços em branco no início e no fim da string
         str = str.trim();
 
+        //Se a string estiver vazia parar a função
         if (str === '') {
             return;
         }
 
+        //Separa a string do input por palavra
         const palavras = str.split(' ');
 
+        //Atribui a quantidade de palavras ao input 
         newStr.value = palavras.length;
     }
 
     function media(event) {
+        //Verifica se a variável event está definida e se a propriedade keyCode do evento é diferente de 13 (tecla "Enter" do teclado)
         if (event && event.keyCode !== 13) {
             return;
         }
 
+
+        //Declaração dos campos de input
         const input = document.getElementById("media").value;
         const resultado = document.getElementById("resultadoMedia");
+
+        //Divisão dos valores do input por vírgula e convertendo a string para número
         const valores = input.split(',').map(Number);
 
+        //Declaração da variável soma com o valor 0
         let soma = 0;
 
+        //Soma dos valores escolhidos pelo usuário
         for (let i = 0; i < valores.length; i++) {
             soma += valores[i];
         }
+
+        //Divisão da soma dos valores pela quantidade de valores e atribuição ao input na tela
         resultado.value = soma / valores.length;
     }
 
     function palavraMaisLonga(event) {
+        //Verifica se a variável event está definida e se a propriedade keyCode do evento é diferente de 13 (tecla "Enter" do teclado)
         if (event && event.keyCode !== 13) {
             return;
         }
 
+
+        //Declaração dos campos de input
         let palavras = document.getElementById("palavras").value.split(" ");
         const palavraMaisLonga = document.getElementById("palavraMaisLonga");
 
+        //Declaração da variável que recebe a palavra mais longa e iniciando-a na primeira palavra da string
         let _palavraMaisLonga = palavras[0];
 
+        //Caminha todo o vetor e atribui a palavra mais longa à variável caso ela seja encontrada
         for (let i = 1; i < palavras.length; i++) {
             if (palavras[i].length > _palavraMaisLonga.length) {
                 _palavraMaisLonga = palavras[i];
             }
         }
 
+        //Atribuição ao input na tela
         palavraMaisLonga.value = _palavraMaisLonga;
     }
 
     function somaMatriz(event) {
+        //Verifica se a variável event está definida e se a propriedade keyCode do evento é diferente de 13 (tecla "Enter" do teclado)
         if (event && event.keyCode !== 13) {
             return;
         }
 
+
+        //Declaração dos campos de input
         const input = document.getElementById("soma").value;
         const resultado = document.getElementById("somaMatriz");
+
+        //Divisão dos valores do input por espaço e convertendo a string para número
         const valores = input.split(" ").map(Number);
 
+        //Declaração da variável soma com o valor 0
         let soma = 0;
 
+        //Somando os valores da matriz
         for (let i = 0; i < valores.length; i++) {
             soma += valores[i];
         }
 
+        //Soma dos valores e atribuição ao input na tela
         resultado.value = soma;
     }
 
     function _fatorialRecursivo(event) {
+        //Verifica se a variável event está definida e se a propriedade keyCode do evento é diferente de 13 (tecla "Enter" do teclado)
         if (event && event.keyCode !== 13)
             return;
 
+        //Declaração dos campos de input
         const fatorialNum = document.getElementById("fatorialNum").value;
         const resultadoFatorial = document.getElementById("resultadoFatorial");
 
-        let result = fatorialRecursivo(fatorialNum);
-
-        resultadoFatorial.value = result;
+        //Atribuição do valor do fatorial ao input
+        resultadoFatorial.value = fatorialRecursivo(fatorialNum);
     }
 
     function fatorialRecursivo(numero) {
 
+        //Cálculo do fatorial e uso de recursividade até que o valor seja 0
         if (numero === 0) {
             return 1;
         } else {

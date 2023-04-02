@@ -16,7 +16,8 @@
 <div class="topnav">
   <a href="#javascript:;" data-target="#collapse-content-arp" class="collapse-btn active">ARP - Ciclo 1</a>
 
-  <a href="#javascript:;" data-target="#collapse-content-apS1" class="collapse-btn" data-toggle="collapse">Atividades Práticas</a>
+  <a href="#javascript:;" data-target="#collapse-content-apS1" class="collapse-btn" data-toggle="collapse">Atividades
+    Práticas</a>
 
   <div class="row" style="display: flex; justify-content: flex-end;">
     <div class="row col-md-5">
@@ -74,7 +75,7 @@
   </table>
 </div>
 
-<!-- Modal -->
+<!-- Estrutura padrão de um modal com bootstrap -->
 <div class="modal" tabindex="-1" id="exampleModal" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -83,32 +84,33 @@
       </div>
 
       <div class="modal-body">
-        <form id="formData">
-          <div>
-            <label for="medico">Médico Responsável</label>
-            <select class="form-control" id="medico">
-              <option>Medico 1</option>
-              <option>Medico 2</option>
-              <option>Medico 3</option>
-              <option>Medico 4</option>
-              <option>Medico 5</option>
-            </select>
-          </div>
-          <div>
-            <label for="tipoConsulta">Tipo de Consulta</label>
-            <select class="form-control" id="tipoConsulta">
-              <option>Consulta 1</option>
-              <option>Consulta 2</option>
-              <option>Consulta 3</option>
-              <option>Consulta 4</option>
-              <option>Consulta 5</option>
-            </select>
-          </div>
-          <div>
-            <label for="dataConsulta">Data Consulta</label>
-            <input class="form-control" id="dataConsulta" type="datetime-local">
-          </div>
-        </form>
+        <!-- <form>: Cria um formulário que será preenchido pelo usuário -->
+          <form id="formData">
+            <div>
+              <label for="medico">Médico Responsável</label>
+              <select class="form-control" id="medico">
+                <option>Medico 1</option>
+                <option>Medico 2</option>
+                <option>Medico 3</option>
+                <option>Medico 4</option>
+                <option>Medico 5</option>
+              </select>
+            </div>
+            <div>
+              <label for="tipoConsulta">Tipo de Consulta</label>
+              <select class="form-control" id="tipoConsulta">
+                <option>Consulta 1</option>
+                <option>Consulta 2</option>
+                <option>Consulta 3</option>
+                <option>Consulta 4</option>
+                <option>Consulta 5</option>
+              </select>
+            </div>
+            <div>
+              <label for="dataConsulta">Data Consulta</label>
+              <input class="form-control" id="dataConsulta" type="datetime-local">
+            </div>
+          </form>
       </div>
 
       <div class="modal-footer">
@@ -119,40 +121,56 @@
   </div>
 </div>
 
+<!-- Sessão de scripts usados no documento -->
 <script>
+  // Ddeclaração de variáveis que recebem campos do documento como parâmetro
   var tabela = document.getElementById("tableBody");
   var botao = document.getElementById("salvar");
 
+  // Adiciona um evento de 'click' para o botão salvar
   botao.addEventListener("click", function (res) {
+    // Evita que o botão realize ações já definidas pelo navegador
     res.preventDefault();
 
+    // Cria um elemento 'tr' no documento
     var pacienteTr = document.createElement("tr");
 
+    // Cria elementods 'td' no documento
     var medico = document.createElement("td");
     var tipoConsulta = document.createElement("td");
     var dataConsulta = document.createElement("td");
 
+    // Atribui os valores para os elementos criados
     medico.textContent = document.getElementById("medico").value;
     tipoConsulta.textContent = document.getElementById("tipoConsulta").value;
     dataConsulta.textContent = document.getElementById("dataConsulta").value;
 
+    // Atribui os elementos 'td' criados ao elemento 'tr' criado para a criação de campos em tabela
     pacienteTr.appendChild(medico);
     pacienteTr.appendChild(tipoConsulta);
     pacienteTr.appendChild(dataConsulta);
 
+    // Atribui o campo 'tr' à tabela
     tabela.appendChild(pacienteTr);
   });
 </script>
 
 <script>
+  // Declara uma função chamada por alguma ação do documento
   function searchQuery() {
+    // Declaração de variáveis
     var input, filtro, tabela, tr, i, txtValue, nomeMedico;
 
+    // Atribuição de valores para as variáveis
     input = document.getElementById("pesquisa");
+    // Alterando o texto escrito pelo usuário para caixa alta, para que não haja inconsistência na pesquisa
     filtro = input.value.toUpperCase();
+    // Recebe a tabela do documento
     tabela = document.getElementById("tableBody");
+    // Recebe os elementos 'tr' da tabela
     tr = tabela.getElementsByTagName("tr");
 
+    // Caminha todas as linhas da tabela para encontrar qual é igual à pesquisa do usuário e não apresenta as que não são iguais
     for (i = 0; i < tr.length; i++) {
       nomeMedico = tr[i].getElementsByTagName("td")[0];
       txtValue = nomeMedico.textContent || nomeMedico.innerText;
@@ -164,14 +182,3 @@
     }
   }
 </script>
-
-<!-- <script>
-  function toggleActive() {
-    var coll = document.getElementsByClassName("collapse-btn");
-    for (i = 0; i < coll.length; i++) {
-      coll[i].addEventListener("click", function () {
-        this.classList.toggle("active");
-      });
-    }
-  }
-</script> -->

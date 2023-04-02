@@ -1,49 +1,32 @@
-.topnav {
+  /* Propriedades precedidas por ponto são classes */
+  .topnav {
+    /* Define a cor do fundo do elemento */
     background-color: #333;
+    /* Controla o comportamento de elementos que excedem sua área de exibição */
     overflow: hidden;
   }
-  
+  /* Classes sucedidas por tags HTML estilizam a tag em específico */
   .topnav a {
+    /* Definir o posicionamento horizontal de um elemento em relação ao seu contêiner. */
     float: left;
+    /* Definir a cor de um elemento */
     color: #f2f2f2;
+    /* Definir o posicionamento de textos desse elemento */
     text-align: center;
+    /* Define o distanciamento desse elemento com elementos a sua volta*/
     padding: 14px 16px;
+    /* Adiciona ou remove estilizações de textos */
     text-decoration: none;
+    /* Define o tamanho da fonte  */
     font-size: 17px;
   }
-
+/* Classes sucedidas por tags HTML sucedidas por dois pontos definem um ação para o elemento quando em dada situação */
   .topnav a:hover {
     background-color: #ddd;
     color: black;
   }
-  
+  /* Classes sucedidas por tags HTML sucedidas por ponto definem uma classe para a tag em específico */
   .topnav a.active {
     background-color: midnightblue;
     color: white;
-  }
-
-  .container {
-    position: relative;
-  }
-  
-  .tabuleiro {
-    display: flex;
-    flex-wrap: wrap;
-    width: 300px;
-    height: 300px;
-    margin: 0 auto;
-  }
-  
-  .celula {
-    width: 90px;
-    height: 90px;
-    margin: 5px;
-    background-color: #DDD;
-    border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 72px;
-    font-weight: bold;
-    cursor: pointer;
   }
