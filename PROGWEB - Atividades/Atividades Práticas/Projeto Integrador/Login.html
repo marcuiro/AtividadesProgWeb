@@ -1,0 +1,172 @@
+<head>
+    <link rel="stylesheet" href="../../styles/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../styles/fontawesome-free-6.4.0-web/css/all.min.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+
+<div class="topnav">
+    <a href="#javascript:;" data-target="#collapse-content-arp" class="collapse-btn" data-toggle="collapse">ARP - Ciclo 1</a>
+    <a href="#javascript:;" data-target="#collapse-content-apS1" class="collapse-btn" data-toggle="collapse">Atividades Práticas</a>
+    <a href="#javascript:;" data-target="#collapse-content-projeto" class="collapse-btn active" >Projeto Integrador</a>
+  
+    <div class="row" style="display: flex; justify-content: flex-end;">
+      <div class="row col-md-5">
+        <div style="color: white;">Curso de Engenharia de Software - UniEVANGÉLICA
+        </div>
+        <div style="color: white;">Disciplina de Programação Web</div>
+      </div>
+  
+      <div class="row col-md-3">
+        <div style="color: white;">Dev: Marco Antônio Martins</div>
+        <div style="color: white;">01/04/2023</div>
+      </div>
+    </div>
+  </div>
+  <div class="topnav">
+  
+    <div class="topnav" id="collapse-content-projeto">
+        <a href="../Projeto Integrador/Index.html">Index</a>
+        <a class="active" href="../Projeto Integrador/Login.html">Login</a>
+      </div>
+
+    <div class="topnav collapse" id="collapse-content-arp">
+      <a href="../../ARP - Ciclo 1/Consultas.html">Consultas</a>
+      <a href="../../ARP - Ciclo 1/Pacientes.html">Pacientes</a>
+      <a href="../../ARP - Ciclo 1/Medicamentos.html">Medicamentos</a>
+    </div>
+  
+    <div class="topnav collapse" id="collapse-content-apS1">
+      <a href="../../Atividades Práticas/Index.html">Home</a>
+      <a href="../../Atividades Práticas/Formulario.html">Formulários</a>
+      <a href="../../Atividades Práticas/Tabelas.html">Tabelas</a>
+      <a href="../../Atividades Práticas/Imagens.html">Imagens</a>
+      <a href="../../Atividades Práticas/Atividades Pré-Aula S3.html">Pré-Aula S3</a>
+    </div>
+    
+  </div>
+
+<header style="background-color: white;">
+    <div class="row col-md-12" style="padding-left: 10px;">
+        <a href="Index.html" class="col-md-1 btn btn-warning" style="color:white; margin: 10px;">Voltar</a>
+        <h4 class="centraliza col-md-10">Adicione um estabelecimento</h4>
+    </div>
+</header>
+
+<body style=" background-color: #e8edea;">
+    <div class="row" style="margin-left: 20px; margin-right: 20px; padding-top: 20px;">
+        <h1>Dados</h1>
+
+        <hr>
+
+        <div class="col-md-3 col-xs-12">
+            <div>
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" class="form-control required">
+            </div>
+            <div style="padding-top: 20px;">
+                <label for="endereco">Endereço</label>
+                <input type="text" id="endereco" class="form-control required">
+            </div>
+            <div style="padding-top: 20px;">
+                <label for="sobre">Sobre</label>
+                <textarea maxlength="300" rows="5" class="form-control required" id="sobre"></textarea>
+            </div>
+            <div style="padding-top: 20px;">
+                <label for="telefone">Telefone</label>
+                <input type="text" id="telefone" class="form-control required">
+                <label for="wpp">Esse número contém whatsapp?</label>
+                <input type="checkbox" id="wpp" style="padding-top: 3px;">
+            </div>
+            <div style="padding-top: 30px;">
+                <button id="addEstabelecimento" class="btn btn-success" onclick="adicionarEstabelecimento()">Adicionar
+                    estabelecimento</button>
+            </div>
+        </div>
+        <div class="col-md-9 col-xs-12">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th>Nome</th>
+                    <th>Endereço</th>
+                    <th>Sobre</th>
+                    <th>Telefone</th>
+                    <th>Whatsapp</th>
+                  </tr>
+                <tbody id="tableBody">
+                </tbody>
+              </table>
+        </div>
+    </div>
+</body>
+
+<script>
+    function adicionarEstabelecimento() {
+        var inputs = document.querySelectorAll(".required");
+        var nome, endereco, sobre, telefone, wpp, tabela;
+        var vazio = false;
+        
+        inputs.forEach(element => {
+            if (element.value == null || element.value == "") {
+                vazio = true;
+            }
+        });
+
+        if (vazio) {
+            swal({
+                title: "Preencha todos os campos!",
+                icon: "warning",
+                button: true,
+            });
+            return;
+        } else {
+            swal({
+                title: "Localização adicionada com sucesso!",
+                icon: "success",
+                button: true,
+            });
+        }
+
+        tabela = document.getElementById("tableBody");
+
+        const localTr = document.createElement("tr");
+
+        nome = document.createElement("td");
+        endereco = document.createElement("td");
+        sobre = document.createElement("td");
+        telefone = document.createElement("td");
+        wpp = document.createElement("td");
+
+        nome.textContent = document.getElementById("nome").value;
+        endereco.textContent = document.getElementById("endereco").value;
+        sobre.textContent = document.getElementById("sobre").value;
+        telefone.textContent = document.getElementById("telefone").value;
+        var checkedValue = $('#wpp:checked').val();
+
+        if (checkedValue == "on"){
+            wpp.textContent = "Sim";
+        }
+        else{
+            wpp.textContent = "Não";
+        }
+
+        localTr.appendChild(nome);
+        localTr.appendChild(endereco);
+        localTr.appendChild(sobre);
+        localTr.appendChild(telefone);
+        localTr.appendChild(wpp);
+
+        tabela.appendChild(localTr);
+    }
+</script>
