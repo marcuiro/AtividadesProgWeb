@@ -1,3 +1,5 @@
+<!-- TODOS OS ELEMENTOS SEM COMENTÁRIOS FORAM EXPLICADOS NOS DOCUMENTOS ANTERIORES -->
+
 <head>
     <link rel="stylesheet" href="../../styles/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -13,49 +15,52 @@
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../../styles/fontawesome-free-6.4.0-web/css/all.min.css">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- <meta>: Define dados sobre o documento HTML que podem ou não ser necessários, nesse caso foi usada para corrigir caracteres especiais que não estavam sendo aceitos -->
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 
 <div class="topnav">
-    <a href="#javascript:;" data-target="#collapse-content-arp" class="collapse-btn" data-toggle="collapse">ARP - Ciclo 1</a>
-    <a href="#javascript:;" data-target="#collapse-content-apS1" class="collapse-btn" data-toggle="collapse">Atividades Práticas</a>
-    <a href="#javascript:;" data-target="#collapse-content-projeto" class="collapse-btn active" >Projeto Integrador</a>
-  
+    <a href="#javascript:;" data-target="#collapse-content-arp" class="collapse-btn" data-toggle="collapse">ARP - Ciclo
+        1</a>
+    <a href="#javascript:;" data-target="#collapse-content-apS1" class="collapse-btn" data-toggle="collapse">Atividades
+        Práticas</a>
+    <a href="#javascript:;" data-target="#collapse-content-projeto" class="collapse-btn active">Projeto Integrador</a>
+
     <div class="row" style="display: flex; justify-content: flex-end;">
-      <div class="row col-md-5">
-        <div style="color: white;">Curso de Engenharia de Software - UniEVANGÉLICA
+        <div class="row col-md-5">
+            <div style="color: white;">Curso de Engenharia de Software - UniEVANGÉLICA
+            </div>
+            <div style="color: white;">Disciplina de Programação Web</div>
         </div>
-        <div style="color: white;">Disciplina de Programação Web</div>
-      </div>
-  
-      <div class="row col-md-3">
-        <div style="color: white;">Dev: Marco Antônio Martins</div>
-        <div style="color: white;">08/04/2023</div>
-      </div>
+
+        <div class="row col-md-3">
+            <div style="color: white;">Dev: Marco Antônio Martins</div>
+            <div style="color: white;">08/04/2023</div>
+        </div>
     </div>
-  </div>
-  <div class="topnav">
-  
+</div>
+<div class="topnav">
+
     <div class="topnav" id="collapse-content-projeto">
         <a href="../Projeto Integrador/Index.html">Index</a>
         <a class="active" href="../Projeto Integrador/Login.html">Login</a>
-      </div>
+    </div>
 
     <div class="topnav collapse" id="collapse-content-arp">
-      <a href="../../ARP - Ciclo 1/Consultas.html">Consultas</a>
-      <a href="../../ARP - Ciclo 1/Pacientes.html">Pacientes</a>
-      <a href="../../ARP - Ciclo 1/Medicamentos.html">Medicamentos</a>
+        <a href="../../ARP - Ciclo 1/Consultas.html">Consultas</a>
+        <a href="../../ARP - Ciclo 1/Pacientes.html">Pacientes</a>
+        <a href="../../ARP - Ciclo 1/Medicamentos.html">Medicamentos</a>
     </div>
-  
+
     <div class="topnav collapse" id="collapse-content-apS1">
-      <a href="../../Atividades Práticas/Index.html">Home</a>
-      <a href="../../Atividades Práticas/Formulario.html">Formulários</a>
-      <a href="../../Atividades Práticas/Tabelas.html">Tabelas</a>
-      <a href="../../Atividades Práticas/Imagens.html">Imagens</a>
-      <a href="../../Atividades Práticas/Atividades Pré-Aula S3.html">Pré-Aula S3</a>
+        <a href="../../Atividades Práticas/Index.html">Home</a>
+        <a href="../../Atividades Práticas/Formulario.html">Formulários</a>
+        <a href="../../Atividades Práticas/Tabelas.html">Tabelas</a>
+        <a href="../../Atividades Práticas/Imagens.html">Imagens</a>
+        <a href="../../Atividades Práticas/Atividades Pré-Aula S3.html">Pré-Aula S3</a>
     </div>
-    
-  </div>
+
+</div>
 
 <header style="background-color: white;">
     <div class="row col-md-12" style="padding-left: 10px;">
@@ -97,26 +102,28 @@
         <div class="col-md-9 col-xs-12">
             <table class="table">
                 <thead>
-                  <tr>
-                    <th>Nome</th>
-                    <th>Endereço</th>
-                    <th>Sobre</th>
-                    <th>Telefone</th>
-                    <th>Whatsapp</th>
-                  </tr>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Endereço</th>
+                        <th>Sobre</th>
+                        <th>Telefone</th>
+                        <th>Whatsapp</th>
+                    </tr>
                 <tbody id="tableBody">
                 </tbody>
-              </table>
+            </table>
         </div>
     </div>
 </body>
 
 <script>
     function adicionarEstabelecimento() {
+        //querySelectorAll recebe todos os elementos com o parâmetro passado
         var inputs = document.querySelectorAll(".required");
         var nome, endereco, sobre, telefone, wpp, tabela;
         var vazio = false;
-        
+
+        //foreach é um método que faz um tratamento para cada elemento de um vetor
         inputs.forEach(element => {
             if (element.value == null || element.value == "") {
                 vazio = true;
@@ -124,6 +131,7 @@
         });
 
         if (vazio) {
+            //swal é uma mensagem personalizável do pacote sweetalert, pode ser usada para diversos casos que envolva mensagens para o usuário
             swal({
                 title: "Preencha todos os campos!",
                 icon: "warning",
@@ -152,12 +160,14 @@
         endereco.textContent = document.getElementById("endereco").value;
         sobre.textContent = document.getElementById("sobre").value;
         telefone.textContent = document.getElementById("telefone").value;
+
+        //Recebe o valor da checkbox via JQuery
         var checkedValue = $('#wpp:checked').val();
 
-        if (checkedValue == "on"){
+        if (checkedValue == "on") {
             wpp.textContent = "Sim";
         }
-        else{
+        else {
             wpp.textContent = "Não";
         }
 
